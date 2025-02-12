@@ -34,7 +34,7 @@ const reverseGeocode = async (
   longitude: number
 ): Promise<string> => {
   const accessToken =
-    "pk.eyJ1IjoiYW5pZmZvdXJkZXYiLCJhIjoiY2xvc28zMXJjMDM4dTJycXc0aHBkN2pmcyJ9.IEOWZZQT6rlwKckMaoTh8g"; // Replace with your Mapbox API key
+    "pk_test_51QBbcOAufKKBd4a0cutDWMMz2eIFkrhBPi2R8MwEhs0gYxv1sxMGt576gvQsiXJ6yrXNWpZ0ofzsoM8zJrKRDns500oRFyMmBb"; // Replace with your Mapbox API key
   try {
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${accessToken}`
