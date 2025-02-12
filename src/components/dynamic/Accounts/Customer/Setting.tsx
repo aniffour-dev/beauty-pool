@@ -5,6 +5,7 @@ import Header from "@/components/dynamic/Accounts/Customer/Global/Header";
 import api from "@/services/auth";
 import { Gruppo } from "next/font/google";
 import Appointment from "./Loadings/Appointment";
+import Cookies from "js-cookie";
 
 const gruppo = Gruppo({
   subsets: ["latin"],
@@ -48,7 +49,8 @@ const Setting = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
+  const [selectedAppointment, setSelectedAppointment] =
+    useState<Appointment | null>(null);
   const [loading, setLoading] = useState(true); // Add loading state
 
   const toggleSidebar = () => {
@@ -148,6 +150,51 @@ const Setting = () => {
     return appointmentDay > today;
   };
 
+  const handleDeleteAccount = async () => {
+    if (!userData) return;
+
+    const token = Cookies.get("access_token"); // Retrieve the token from cookies
+
+    if (!token) {
+      console.error("Authentication token is missing.");
+      alert("Authentication token is missing.");
+      return;
+    }
+
+    try {
+      console.log("Deleting account with ID:", userData.id);
+      const response = await api.delete("/items/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: [userData.id], // Send the user ID in the payload
+      });
+
+      console.log("Delete account response:", response);
+
+      if (response.status === 200 || response.status === 204) {
+        // Account deleted successfully
+        alert("Your account has been deleted successfully.");
+        // Redirect to home or login page
+        window.location.href = "/";
+      } else {
+        console.error(
+          "Failed to delete account. Response status:",
+          response.status
+        );
+        alert("Failed to delete account. Please try again.");
+      }
+    } catch (error: any) {
+      console.error("Error deleting account:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      }
+      alert("An error occurred while deleting your account. Please try again.");
+    }
+  };
+
   return (
     <div className="">
       <Header toggleSidebar={toggleSidebar} />
@@ -158,14 +205,27 @@ const Setting = () => {
         }`}
       >
         <div className="p-4 mt-20">
-          <h2 className={`${gruppo.className} text-4xl text-black font-bold mb-5`}>
+          <h2
+            className={`${gruppo.className} text-4xl text-black font-bold mb-5`}
+          >
             Setting
           </h2>
-          {loading ? (
-            <></>
-          ) : (
-            <></>
-          )}
+          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+            <h1 className="text-xl font-bold mb-2">Delete account</h1>
+            <p className="text-gray-600 mb-4">
+              Are you sure you want to leave Fresha?
+            </p>
+            <button
+              className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700"
+              onClick={() => {
+                console.log("Delete account button clicked");
+                handleDeleteAccount();
+              }}
+            >
+              Delete my account
+            </button>
+          </div>
+          {loading ? <></> : <></>}
         </div>
       </div>
     </div>

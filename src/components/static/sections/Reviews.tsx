@@ -1,5 +1,6 @@
 import React from "react";
 import { Gruppo } from "next/font/google";
+import Pic from "../../../../public/assets/register.webp";
 
 const gruppo = Gruppo({
   subsets: ["latin"],
@@ -11,21 +12,21 @@ const Reviews = () => {
   const reviews = [
     {
       name: "John Doe",
-      image: "https://via.placeholder.com/100",
+      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
       review:
         "BeautyPool is amazing! Booking my appointments has never been this easy. Highly recommend it!",
       rating: 5,
     },
     {
       name: "Jane Smith",
-      image: "https://via.placeholder.com/100",
+      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
       review:
         "Great platform with excellent service providers. It saves so much time, and I always find top-rated salons.",
       rating: 4,
     },
     {
       name: "Michael Lee",
-      image: "https://via.placeholder.com/100",
+      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
       review:
         "A very user-friendly platform! It helped me discover hidden gems in my city. Absolutely love it!",
       rating: 5,
@@ -53,7 +54,7 @@ const Reviews = () => {
               <img
                 src={review.image}
                 alt={review.name}
-                className="w-16 h-16 rounded-full mb-4"
+                className="w-16 h-16 rounded-full mb-4 object-cover"
               />
               {/* Customer Name */}
               <h3 className="text-lg font-semibold text-gray-800">

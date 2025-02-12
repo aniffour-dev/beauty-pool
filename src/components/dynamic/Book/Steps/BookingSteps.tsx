@@ -844,7 +844,7 @@ interface BookingStepsProps {
 }
 
 const stripePromise = loadStripe(
-  "pk_test_51PqnMzCMCpxFz40MVwOUjcuR9TIEwHGKXk7G9SLptwqTq6RaC2EhUDa4QICmWgG6aPqihsjszOmHLq7F5MjwzoSC00HCbYjVe9"
+  "sk_test_51QBbcOAufKKBd4a0a7Yy5Lka5vOvICKwc58xD73AKu8ev1fPdyxCDy60RVjYgc2piYSFybO9Ekd8HeWhy4ZOynM000wZKsiNEC"
 );
 
 const generateTimeSlots = (openTime: string, closeTime: string): string[] => {

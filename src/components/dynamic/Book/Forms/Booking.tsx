@@ -176,7 +176,7 @@ export default function BookingForm() {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await api.get("/items/categories");
+        const response = await api.get("/items/Categorie");
         setCategories(response.data.data); // Storing data as an array
         setFilteredCategories(response.data.data); // Initialize filtered categories
       } catch (error) {
@@ -360,7 +360,7 @@ export default function BookingForm() {
                 />
               </div>
               {results.length > 0 && (
-                <div className="mt-2 bg-white border rounded-md shadow-lg max-h-60 overflow-y-auto absolute w-full md:w-auto">
+                <div className="mt-2 bg-white border rounded-md shadow-lg z-40 max-h-60 overflow-y-auto absolute w-full md:w-auto">
                   <ul>
                     {results.map((result, index) => (
                       <li
@@ -413,7 +413,7 @@ export default function BookingForm() {
                 </div>
               </div>
               {dropdownOpen && (
-                <div className="bg-white p-4 rounded-lg shadow-md absolute w-full md:w-auto h-[250px] overflow-auto">
+                <div className="bg-white p-4 z-40 rounded-lg shadow-md absolute w-full md:w-auto h-[250px] overflow-auto">
                   <div className="flex items-center space-x-2 mb-4">
                     {/* <div
                       className="w-7 h-7 bg-cover bg-center relative -top-1.5"
@@ -467,40 +467,120 @@ export default function BookingForm() {
           </div>
           {/* Time Selection */}
           <div className="w-full md:w-6/12 lg:w-4/12 mb-2">
-            <div className="flex items-center border rounded-full px-4 py-0.5 space-x-2">
-              <AiOutlineClockCircle className="text-slate-800 size-5" />
-              <input
-                type="text"
-                placeholder="Set Time"
-                className="outline-none border-none focus:outline-none focus:ring-0 focus:shadow-none hover:shadow-none active:shadow-none placeholder:text-gray-600 placeholder:opacity-80"
-                onClick={() => setShowFilter(!showFilter)}
-                value={selectedTime}
-                onChange={(e) => setSelectedTime(e.target.value)}
-              />
-              {showFilter && (
-                <div
-                  ref={timePopupRef}
-                  className="mt-4 bg-white rounded-lg shadow-md p-4 absolute"
-                >
-                  <div className="flex space-x-2 mb-4">
-                    {availableTimeSlots.map((timeSlot) => (
-                      <button
-                        key={timeSlot}
-                        className={`px-4 py-2 rounded-full text-sm md:text-md ${
-                          selectedTime === timeSlot
-                            ? "bg-[#eca4977c] text-slate-900"
-                            : "border border-gray-300 text-gray-700"
-                        }`}
-                        onClick={() => handleTimeSelection(timeSlot)}
-                      >
-                        {timeSlot}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+  <div className="flex items-center border rounded-full px-4 py-0.5 space-x-2">
+    <AiOutlineClockCircle className="text-slate-800 size-5" />
+    <input
+      type="text"
+      placeholder="Set Time"
+      className="outline-none border-none focus:outline-none focus:ring-0 focus:shadow-none hover:shadow-none active:shadow-none placeholder:text-gray-600 placeholder:opacity-80"
+      onClick={() => setShowFilter(!showFilter)}
+      value={selectedTime}
+      onChange={(e) => setSelectedTime(e.target.value)}
+    />
+    {showFilter && (
+      <div ref={timePopupRef} className="mt-4 left-[-21px] z-40 bg-white rounded-lg shadow-md p-4 absolute w-[calc(100vw-2rem)] lg:left-2 md:w-[max-content]">
+        <div className="flex flex-wrap md:flex-nowrap gap-2 md:space-x-2 mb-4">
+          <div className="w-[calc(50%-0.25rem)] md:w-auto">
+            <button
+              className={`w-full md:w-auto px-4 py-2 rounded-full ${
+                selectedTime === "Anytime"
+                  ? "bg-[#eca4977c] text-slate-900"
+                  : "border border-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleTimeSelection("Anytime")}
+            >
+              Any time
+            </button>
+          </div>
+          <div className="w-[calc(50%-0.25rem)] md:w-auto">
+            <button
+              className={`w-full md:w-auto px-4 py-2 rounded-full ${
+                selectedTime === "Morning"
+                  ? "bg-[#eca4977c] text-slate-900"
+                  : "border border-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleTimeSelection("Morning")}
+            >
+              Morning
+            </button>
+          </div>
+          <div className="w-[calc(50%-0.25rem)] md:w-auto">
+            <button
+              className={`w-full md:w-auto px-4 py-2 rounded-full ${
+                selectedTime === "Afternoon"
+                  ? "bg-[#eca4977c] text-slate-900"
+                  : "border border-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleTimeSelection("Afternoon")}
+            >
+              Afternoon
+            </button>
+          </div>
+          <div className="w-[calc(50%-0.25rem)] md:w-auto">
+            <button
+              className={`w-full md:w-auto px-4 py-2 rounded-full ${
+                selectedTime === "Evening"
+                  ? "bg-[#eca4977c] text-slate-900"
+                  : "border border-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleTimeSelection("Evening")}
+            >
+              Evening
+            </button>
+          </div>
+        </div>
+        <div className="flex space-x-2">
+          <div className="relative w-1/2">
+            <select
+              className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              value={fromTime}
+              onChange={(e) => setFromTime(e.target.value)}
+            >
+              <option>From</option>
+              {Array.from({ length: 24 }, (_, i) => (
+                <option key={i}>
+                  {i.toString().padStart(2, "0")}:00
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M7 10l5 5 5-5H7z" />
+              </svg>
             </div>
           </div>
+          <div className="relative w-1/2">
+            <select
+              className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              value={toTime}
+              onChange={(e) => setToTime(e.target.value)}
+            >
+              <option>To</option>
+              {Array.from({ length: 23 }, (_, i) => (
+                <option key={i}>
+                  {(i + 1).toString().padStart(2, "0")}:00
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M7 10l5 5 5-5H7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</div>
           <div className="w-full mb-2">
             {/* Submit Button */}
             <button
