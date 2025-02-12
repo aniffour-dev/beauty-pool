@@ -36,8 +36,8 @@ export default function NewBeauty() {
         const response = await api.get(
           "/items/articles?fields[]=*,category.label"
         );
-        console.log(response.data.data); // Debugging: Log the articles data
-        setArticles(response.data.data); // Storing data as an array
+        console.log(response.data.data); 
+        setArticles(response.data.data); 
       } catch (error) {
         console.error("Error fetching articles:", error);
       }
@@ -136,3 +136,5 @@ export default function NewBeauty() {
     </div>
   );
 }
+
+

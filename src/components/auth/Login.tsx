@@ -88,6 +88,7 @@ const Register = () => {
                       Manage and grow your business
                     </p>
                   </div>
+                  
                   <IoIosArrowDropright className="size-7 text-gray-600" />
                 </button>
               </div>

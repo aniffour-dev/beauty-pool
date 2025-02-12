@@ -4,8 +4,6 @@ import Sidebar from "@/components/dynamic/Accounts/Customer/Global/Sidebar";
 import Header from "@/components/dynamic/Accounts/Customer/Global/Header";
 import api from "@/services/auth";
 import { Gruppo } from "next/font/google";
-import { CiShop, CiShoppingCart } from "react-icons/ci";
-import Link from "next/link";
 import Appointment from "./Loadings/Appointment";
 
 const gruppo = Gruppo({
@@ -39,9 +37,9 @@ interface Appointment {
   };
   date_created: string;
   date: string;
-  time: string; // Add the time field
+  time: string; 
   booking_ref: string;
-  services?: SubService[]; // Make services optional
+  services?: SubService[]; 
   price: string | number;
   article: Article;
 }
@@ -71,7 +69,7 @@ const Setting = () => {
             "user_created.last_name",
             "date_created",
             "date",
-            "time", // Include the time field
+            "time", 
             "services.sub_services_id.name",
             "price",
             "booking_ref",
@@ -79,11 +77,10 @@ const Setting = () => {
             "article.slug",
             "article.featured_image",
           ].join(","),
-          // Try setting `deep` to ensure relationships are included
           deep: {
             services: {
               sub_services_id: {
-                fields: ["name"], // Explicitly request the `name` field from `sub_services_id`
+                fields: ["name"], 
               },
             },
           },
@@ -95,16 +92,17 @@ const Setting = () => {
     } catch (error) {
       console.error("Error fetching appointments:", error);
     } finally {
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false); 
     }
   };
 
   useEffect(() => {
     fetchAppointments();
+  
   }, []);
+  
 
   const formatTime = (time: string): string => {
-    // Split the time string by the colon and take the first two parts
     const [hours, minutes] = time.split(":");
     return `${hours}:${minutes}`;
   };
