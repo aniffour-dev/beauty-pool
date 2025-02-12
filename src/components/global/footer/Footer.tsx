@@ -128,7 +128,9 @@ export default function Footer() {
             </h1>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <div className="flex items-start mb-4 md:mb-0">
+
+            {/*location*/}
+            {/* <div className="flex items-start mb-4 md:mb-0">
               <i className="fas fa-map-marker-alt text-blue-500 text-2xl mr-4"></i>
               <div>
                 <h2 className="font-semibold mb-1.5 text-lg">Our Location</h2>
@@ -137,7 +139,7 @@ export default function Footer() {
                   401 Broadway, 24th Floor, Orchard Cloud View, London
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="flex items-start">
               <div>
                 <h2 className="font-semibold mb-1.5 text-lg">
@@ -149,7 +151,7 @@ export default function Footer() {
                 </p>
                 <p>
                   <BiPhoneCall className="inline size-5 relative text-[#f47c66] -top-[1px]" />{" "}
-                  +971 589 40 76 74
+                  +971 585 212 534
                 </p>
               </div>
             </div>
