@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import axios from "axios";
 import api from "@/services/auth";
 import { Alert, AlertDescription, AlertTitle } from "@/app/ui/alert";
 
@@ -203,9 +202,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculateTotal, articleId, se
       {showSuccessAlert && (
         <Alert className="mb-4">
           <AlertTitle>Success!</AlertTitle>
-          <AlertDescription>
+          {/* <AlertDescription>
             DRISS BK TOLD ME YOU NEED LA BASE
-          </AlertDescription>
+          </AlertDescription> */}
         </Alert>
       )}
 
