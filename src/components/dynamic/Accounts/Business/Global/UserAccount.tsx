@@ -207,7 +207,7 @@ const UserAccount = () => {
                 <span>Profile</span>
               </Link>
               <Link
-                href="/settings"
+                href="/setting"
                 className="px-4 py-1.5 hover:bg-gray-100 text-sm font-semibold flex justify-start items-center gap-1"
               >
                 <LuSettings className="size-4 relative -top-[1px]" />
