@@ -213,7 +213,7 @@ const Setting = () => {
           <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
             <h1 className="text-xl font-bold mb-2">Delete account</h1>
             <p className="text-gray-600 mb-4">
-              Are you sure you want to leave Fresha?
+              Are you sure you want to leave BeautyPool?
             </p>
             <button
               className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700"
