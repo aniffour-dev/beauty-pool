@@ -130,13 +130,13 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div className="flex items-start mb-4 md:mb-0">
               <i className="fas fa-map-marker-alt text-blue-500 text-2xl mr-4"></i>
-              <div>
+              {/* <div>
                 <h2 className="font-semibold mb-1.5 text-lg">Our Location</h2>
                 <p>
                   <HiOutlineLocationMarker className="inline size-5 text-[#f47c66] relative -top-[1px]" />{" "}
                   401 Broadway, 24th Floor, Orchard Cloud View, London
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="flex items-start">
               <div>
@@ -149,7 +149,7 @@ export default function Footer() {
                 </p>
                 <p>
                   <BiPhoneCall className="inline size-5 relative text-[#f47c66] -top-[1px]" />{" "}
-                  +971 589 40 76 74
+                  +971 585 21 25 34
                 </p>
               </div>
             </div>
