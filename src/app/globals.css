@@ -354,6 +354,25 @@ body {
 }
 
 
+
+
+
+/* ==== popup =====*/ 
+
+.text-gold {
+  color: #FFD700; /* Gold color */
+}
+
+.bg-gold {
+  background-color: #FFD700; /* Gold color */
+}
+
+.hover\:bg-gold-dark:hover {
+  background-color: #CD7F32; /* Darker gold color for hover state */
+}
+
+
+
 /* ====== bg animation ===== */
 
 

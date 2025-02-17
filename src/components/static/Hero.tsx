@@ -1,9 +1,11 @@
+
+import React, { useEffect, useState } from "react";
 import { BackgroundGradientAnimation } from "@/app/ui/background";
-import React from "react";
 import BookingForm from "@/components/dynamic/Book/Forms/Booking";
 import Navbar from "@/components/global/header/Navbar";
 import LiveCounter from "@/components/static/LiveCounter";
 import { Gruppo } from "next/font/google";
+import LoyaltyPopup from "@/components/popup/PopUp";
 
 const gruppo = Gruppo({
   subsets: ['latin'],
@@ -12,6 +14,22 @@ const gruppo = Gruppo({
 });
 
 const Hero = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
+  useEffect(() => {
+    // Optionally, you can use localStorage to show the popup only once per session
+    const hasSeenPopup = localStorage.getItem("hasSeenPopup");
+    if (hasSeenPopup) {
+      setIsPopupOpen(false);
+    } else {
+      localStorage.setItem("hasSeenPopup", "true");
+    }
+  }, []);
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <BackgroundGradientAnimation>
       <div className="z-50 mb-20 relative">
@@ -28,12 +46,13 @@ const Hero = () => {
           <div className="mt-10">
             <BookingForm />
           </div>
-
           <LiveCounter />
         </div>
       </div>
+      <LoyaltyPopup isOpen={isPopupOpen} onClose={closePopup} />
     </BackgroundGradientAnimation>
   );
 };
 
 export default Hero;
+
