@@ -145,7 +145,7 @@ export default function Footer() {
                 </h2>
                 <p>
                   <TbMailOpened className="inline size-5 relative text-[#f47c66] -top-[1px]" />{" "}
-                  support@beautypool.ae
+                  info@beautypool.ae
                 </p>
                 <p>
                   <BiPhoneCall className="inline size-5 relative text-[#f47c66] -top-[1px]" />{" "}

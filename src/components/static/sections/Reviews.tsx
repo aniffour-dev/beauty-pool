@@ -34,7 +34,7 @@ const Reviews = () => {
   ];
 
   return (
-    <section className="bg-white py-16 px-6">
+    <section className="bg-white py-16 px-6 mb-8 md:mb-10 lg:mb-16 xl:mb-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <h2

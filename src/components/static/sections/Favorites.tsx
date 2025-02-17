@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import api from "@/services/auth";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,7 @@ import { TiLocationOutline } from "react-icons/ti";
 import { GoHeartFill } from "react-icons/go";
 import { OrbitProgress } from "react-loading-indicators";
 import Image from "next/image";
+import gsap from "gsap";
 
 const gruppo = Gruppo({
   subsets: ["latin"],
@@ -46,6 +47,8 @@ export default function Favorites() {
   const [removingFavoriteId, setRemovingFavoriteId] = useState<string | null>(
     null
   );
+  const titleRef = useRef(null);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -81,6 +84,21 @@ export default function Favorites() {
     fetchFavorites();
   }, [userData?.id]);
 
+  useEffect(() => {
+    // GSAP animations
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+
+    gsap.fromTo(
+      swiperRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.5 }
+    );
+  }, [loading]);
+
   const handleRemoveFavorite = async (
     event: React.MouseEvent,
     favoriteId: string
@@ -106,12 +124,14 @@ export default function Favorites() {
         <div className="max-w-6xl mx-auto">
           {/* Section Title */}
           <h2
+            ref={titleRef}
             className={`${gruppo.className} text-3xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3`}
           >
             Favorites
           </h2>
 
           <Swiper
+            ref={swiperRef}
             slidesPerView={3}
             breakpoints={{
               // Mobile (default): 1 slide
