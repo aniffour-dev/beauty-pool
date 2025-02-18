@@ -1,5 +1,7 @@
 import React from "react";
 import { FaCoins } from "react-icons/fa";
+import { MdReadMore } from "react-icons/md";
+import Link from "next/link";
 
 interface LoyaltyPopupProps {
   isOpen: boolean;
@@ -25,13 +27,16 @@ const LoyaltyPopup: React.FC<LoyaltyPopupProps> = ({ isOpen, onClose }) => {
             <FaCoins className="text-gold text-6xl mb-4" />
           </div>
           <h2 className="text-2xl font-bold mb-4">Earn Free Services with Loyalty Points!</h2>
-          <p className="text-gray-700 mb-6">Collect 1,000 points and enjoy a free service on us! Start earning points today with every visit.</p>
+          <p className="text-gray-700 mb-6">Collect 200 points and enjoy a free service on us! Start earning points today with every visit.</p>
+          <div className="flex flex-col mb-4 items-end"> <Link className=" flex gap-1 justify-center items-center underline text-gray-500 opacity-90 text-sm" href="/page/loyalty-program" target="_blank" rel="noopener noreferrer"> learn more <MdReadMore className="flex gap-2"/>
+          </Link></div>
+          
           <button
             onClick={onClose}
             className="bg-gold text-white px-6 py-3 rounded-full hover:bg-gold-dark"
           >
             Got It!
-          </button>
+          </button> 
         </div>
       </div>
     </div>

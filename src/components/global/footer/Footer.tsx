@@ -39,6 +39,9 @@ export default function Footer() {
     getNewArticles();
   }, []);
 
+
+
+
   return (
     // <footer className="bg-gray-50 py-4 px-4 sm:py-6 md:py-8">
     //   <div className="max-w-5xl mx-auto">
@@ -127,7 +130,7 @@ export default function Footer() {
               Please feel free to get in touch with us
             </h1>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-center mb-8 gap-6">
             <div className="flex items-start mb-4 md:mb-0">
               <i className="fas fa-map-marker-alt text-blue-500 text-2xl mr-4"></i>
               {/* <div>
