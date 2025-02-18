@@ -12,21 +12,21 @@ const Reviews = () => {
   const reviews = [
     {
       name: "John Doe",
-      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
+      image: `https://maoulaty.shop/assets/5bdb184c-eec8-44ce-ad3d-f15fba04a0f0?cache-buster=2025-02-18T14:11:32.000Z&key=system-large-contain`,
       review:
         "BeautyPool is amazing! Booking my appointments has never been this easy. Highly recommend it!",
       rating: 5,
     },
     {
       name: "Jane Smith",
-      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
+      image: `https://maoulaty.shop/assets/58dbe024-012f-4690-b16d-80dbd160608b?cache-buster=2025-02-18T14:11:31.000Z&key=system-large-contain`,
       review:
         "Great platform with excellent service providers. It saves so much time, and I always find top-rated salons.",
       rating: 4,
     },
     {
       name: "Michael Lee",
-      image: `https://maoulaty.shop/assets/7a6c834d-ec06-48eb-b3e9-87baae178c08?cache-buster=2024-12-21T19:28:22.000Z&key=system-large-contain`,
+      image: `https://maoulaty.shop/assets/d2e9e37e-0832-49e3-ad9d-4ba3f5d03e8b?cache-buster=2025-02-18T14:11:30.000Z&key=system-large-contain`,
       review:
         "A very user-friendly platform! It helped me discover hidden gems in my city. Absolutely love it!",
       rating: 5,
