@@ -15,7 +15,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiPhoneCall } from "react-icons/bi";
 import { TbMailOpened } from "react-icons/tb";
 import { BsChevronRight } from "react-icons/bs";
-import LoyaltyPopup from "@/components/popup/PopUp";
+// import LoyaltyPopup from "@/components/popup/PopUp";
 import gsap from "gsap";
 
 
@@ -280,7 +280,7 @@ export default function Footer() {
     </div>
     </div>
     </div>
-    <LoyaltyPopup isOpen={isPopupOpen} onClose={closePopup} />
+{/*     <LoyaltyPopup isOpen={isPopupOpen} onClose={closePopup} /> */}
     </div>
   );
 }
